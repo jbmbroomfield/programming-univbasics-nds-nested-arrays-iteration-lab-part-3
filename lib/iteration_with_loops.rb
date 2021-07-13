@@ -1,4 +1,14 @@
 def join_nested_strings(src)
-  # src will be an Array of Arrays of Strings and Integers
-  # Combine all Strings present in the AoA into a single value and return it
+  result = []
+  src.each do |array|
+    result = push_strings_from_array(result, array)
+  end
+  result.join(" ")
+end
+
+def push_strings_from_array(result, array)
+  array.each do |element|
+    result << element if element.is_a? String
+  end
+  result
 end
